@@ -1,106 +1,53 @@
-" Wrap too long lines
-set wrap
-
-" Tabs are 2 characters
-set tabstop=2
-
-" (Auto)indent uses 2 characters
-set shiftwidth=2
-
-" spaces instead of tabs
-set expandtab
-
-" guess indentation
-set autoindent
-
-" Expand the command line using tab
-set wildchar=<Tab>
-
-" show line numbers
-set number
-
-" Fold using markers {{{
-" like this
-" }}}
-set foldmethod=marker
-
-" enable all features
-set nocompatible
-
-" powerful backspaces
-set backspace=indent,eol,start
-
-" highlight the searchterms
-set hlsearch
-
-" jump to the matches while typing
-set incsearch
-
-" ignore case while searching
-set ignorecase
-
-" don't wrap words
-set textwidth=0
-
-" history
-set history=50
-
-" 1000 undo levels
-set undolevels=1000
-
-" show a ruler
-set ruler
-
-" show partial commands
-set showcmd
-
-" show matching braces
-set showmatch
-
-" write before hiding a buffer
-set autowrite
-
-" allows hidden buffers to stay unsaved, but we do not want this, so comment
-" it out:
-"set hidden
-
-"set wmh=0
-
-" auto-detect the filetype
+" Enable default settings.
 filetype plugin indent on
-
-" syntax highlight
-syntax on
-
+set ruler
+set number
+" set textwidth=80
+set wrap| " wrap lines
+set wildmenu
+set wildignorecase
+set wildmode=longest:full,full
+set wildchar=<Tab>
+set t_Co=256
 syntax enable
-
-" Always show the menu, insert longest match
-set completeopt=menuone,longest
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
-
-let g:go_highlight_trailing_whitespace_error=0
-
-execute pathogen#infect()
-
-set background=dark
-" we use a dark background, don't we?
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
-syntax enable
-colorscheme tender
+colorscheme onedark
 
-au BufRead,BufNewFile *.go set filetype=go
-autocmd BufNewFile,BufRead *.json set ft=javascript
+" Search commands
+set smartcase
+set incsearch
+set hlsearch
+
+" Change backup files to /tmp
+call system('mkdir /tmp/vim')
+set directory=/tmp/vim//
+set undodir=/tmp/vim//
+set undofile
+
+" Reload the current buff if changed externally
+set autoread
+
+" Auto indent with 2 spaces
+set smartindent
+set shiftwidth=2
+set expandtab
+set tabstop=2
+
+" Map ^hjkl to move between window panes
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+""""""  vim-plug 
+call plug#begin('~/.vim/plugged')
+
+" for fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" for nerd tree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+call plug#end()
