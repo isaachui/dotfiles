@@ -14,11 +14,10 @@ syntax enable
 " disable folding
 set nofoldenable
 
-" Theme
-colorscheme onedark
 
 " Search commands
 set smartcase
+set ignorecase
 set incsearch
 set hlsearch
 
@@ -37,6 +36,9 @@ set shiftwidth=2
 set expandtab
 set tabstop=2
 
+" make backspace work
+set backspace=indent,eol,start
+
 " Map ^hjkl to move between window panes
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -53,25 +55,31 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" for nerd tree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " for autocomplete
 Plug 'Valloric/YouCompleteMe'
 
 " for saltstack
 Plug 'saltstack/salt-vim'
 Plug 'stephpy/vim-yaml'
+Plug 'Glench/Vim-Jinja2-Syntax'
+
+
+" color schemes
+Plug 'joshdick/onedark.vim'
+
+" auto close brackets
+Plug 'Raimondi/delimitMate'
+
+" js coloring
+Plug 'pangloss/vim-javascript'
+
+" highlight extra white space
+Plug 'ntpeters/vim-better-whitespace'
+
 
 call plug#end()
 
 """"" end vim-plug
-
-" Open NERDTree on open
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-let NERDTreeMapOpenInTab='<ENTER>'
 
 " Remove ctrl+b 
 nnoremap <C-b> <nop>
@@ -87,3 +95,6 @@ augroup CursorLineOnlyInActiveWindow
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
+
+" Theme
+colorscheme onedark
