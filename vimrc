@@ -48,7 +48,7 @@ map <C-l> <C-w>l
 " remap leader key
 let mapleader = ","
 
-""""""  vim-plug 
+""""""  vim-plug
 call plug#begin('~/.vim/plugged')
 
 " for fuzzy finder
@@ -63,6 +63,8 @@ Plug 'saltstack/salt-vim'
 Plug 'stephpy/vim-yaml'
 Plug 'Glench/Vim-Jinja2-Syntax'
 
+" Vim git gutter
+Plug 'airblade/vim-gitgutter'
 
 " color schemes
 Plug 'joshdick/onedark.vim'
