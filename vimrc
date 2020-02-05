@@ -30,7 +30,7 @@ set undodir=/tmp/vim//
 set undofile
 
 " Automatically change current dir
-set autochdir
+" set autochdir
 
 " Reload the current buff if changed externally
 set autoread
@@ -90,6 +90,17 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 " Vim git gutter
 Plug 'airblade/vim-gitgutter'
 
+" Vim vinegar
+Plug 'tpope/vim-vinegar'
+
+" Git wrapper
+Plug 'tpope/vim-fugitive'
+
+" Vim status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+
 " color schemes
 Plug 'joshdick/onedark.vim'
 
@@ -98,6 +109,7 @@ Plug 'Raimondi/delimitMate'
 
 " js coloring
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " highlight extra white space
 Plug 'ntpeters/vim-better-whitespace'
@@ -105,6 +117,8 @@ Plug 'ntpeters/vim-better-whitespace'
 " for golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" linediff
+Plug 'AndrewRadev/linediff.vim'
 
 call plug#end()
 
@@ -130,6 +144,14 @@ colorscheme onedark
 
 " Vim indent lines
 let g:indentLine_char = '|'
+
+" Vim airline configuration
+let g:airline#extensions#hunks#enabled=0
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#vcs_checks = []
+
+autocmd Filetype json let g:indentLine_setConceal = 0
 
 " gopls configuration
 let g:go_def_mode='gopls'
