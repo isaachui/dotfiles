@@ -8,7 +8,6 @@ set wildmenu
 set wildignorecase
 set wildmode=longest:full,full
 set wildchar=<Tab>
-set t_Co=256
 syntax enable
 
 " disable folding
@@ -103,6 +102,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " color schemes
 Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " auto close brackets
 Plug 'Raimondi/delimitMate'
@@ -140,7 +140,12 @@ augroup CursorLineOnlyInActiveWindow
 augroup END
 
 " Theme
-colorscheme onedark
+let g:dracula_italic = 0
+colorscheme dracula
+highlight Normal ctermbg=None
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Vim indent lines
 let g:indentLine_char = '|'
