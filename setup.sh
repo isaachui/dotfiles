@@ -15,7 +15,10 @@ for f in "$DOTS"/*rc; do
 done
 
 # Symlink ideavimrc
-ln -s "$DOTS/.vimrc" $HOME/.ideavimrc
+ln -s "$DOTS/vimrc" $HOME/.ideavimrc
+
+# Symlink tmux
+ln -s "$DOTS/tmux.conf" $HOME/.tmux.conf
 
 # Symlink the vim dir
 if [ -d "$DOTS/vim" ]; then
