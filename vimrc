@@ -121,7 +121,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'AndrewRadev/linediff.vim'
 
 " COC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Needed for nodejs
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
