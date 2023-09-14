@@ -21,7 +21,7 @@ ln -s "$DOTS/vimrc" $HOME/.ideavimrc
 ln -s "$DOTS/tmux.conf" $HOME/.tmux.conf
 
 # Symlink the vim dir
-if [ -d "$DOTS/vim" ]; then
+if ! [ -d "$HOME/.vim" ]; then
   ln -s "$DOTS/vim" $HOME/.vim
 else
   echo Skipping symlinking vim dir
@@ -33,4 +33,16 @@ echo installing vim plugins
 # Install vim plugins
 vim '+PlugInstall --sync' +qall
 
+echo configuring gitconfig
+if ! type git &> /dev/null
+then
+  echo "git needs to be installed"
+else
+  # turn off pager for git branch
+  git config --global pager.branch false
+fi
+
+
 echo finished setup
+
+
